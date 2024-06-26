@@ -1,18 +1,14 @@
+// App.js
 import React from 'react';
-import { View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomePage from './HomePage';
 import BottomTabNavigator from './BottomTabNavigator';
+import { AppThemeProvider } from './AppThemeContext';
 
-const Tab = createBottomTabNavigator();
-
-function App() {
+const App = () => {
   return (
-    
+    <AppThemeProvider>
       <BottomTabNavigator />
-
+    </AppThemeProvider>
   );
-}
+};
 
 export default App;

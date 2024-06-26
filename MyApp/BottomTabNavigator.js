@@ -8,29 +8,30 @@ import HomePage from './HomePage';
 import MycardsPage from './MycardsPage';
 import StatisticsPage from './StatisticsPage';
 import SettingsPage from './SettingsPage';
+import { useAppTheme } from './AppThemeContext';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const { isDarkTheme, theme } = useAppTheme();
+      
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
             if (route.name === 'Home') {
-                iconName = focused ? 'home' : 'home-outline';
-              } else if (route.name === 'Mycards') {
-                iconName = focused ? 'card' : 'card-outline';
-              } else if (route.name === 'Statistics') {
-                iconName = focused ? 'stats-chart' :'pie-chart-outline'
-              } else if (route.name === 'Settings') {
-                iconName = focused ? 'settings' : 'settings-outline';
-              }
-  
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (route.name === 'Mycards') {
+              iconName = focused ? 'card' : 'card-outline';
+            } else if (route.name === 'Statistics') {
+              iconName = focused ? 'stats-chart' : 'pie-chart';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'settings' : 'settings-outline';
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
           tabBarActiveTintColor: 'blue',
           tabBarInactiveTintColor: 'gray',
         })}
